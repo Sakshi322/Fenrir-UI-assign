@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-
+import appleLogo from '../assets/apple.png'
+import googleLogo from '../assets/search.png'
+import facebookLogo from '../assets/meta_.png'
 
 const Field = ({ ph, fk, type = 'text', f, setF, errs }) => (
   <input
@@ -121,22 +123,15 @@ export default function Login({ onLogin, theme, toggleTheme }) {
           </div>
 
           {/* Password */}
-          <div style={{ position:'relative', marginBottom:20 }}>
-            <Field 
-  ph="Password (8+ characters)*"
-  fk="pw"
-  type={showPw ? 'text' : 'password'}
-  f={f}
-  setF={setF}
-  errs={errs}
-/>
-            <button
-              onClick={() => setShowPw(p => !p)}
-              style={{ position:'absolute', right:12, top:'50%', transform:'translateY(-50%)', background:'none', border:'none', cursor:'pointer', color:'#aaa', fontSize:16 }}
-            >
-              {showPw ? '🙈' : '👁'}
-            </button>
-          </div>
+         
+
+
+
+
+            <div style={{ position:'relative', marginBottom:20 }}> <Field ph="Password (8+ characters)*" fk="pw" type={showPw ? 'text' : 'password'} f={f} setF={setF} errs={errs} /> <button onClick={() => setShowPw(p => !p)} style={{ position:'absolute', right:12, top:'50%', transform:'translateY(-50%)', background:'none', border:'none', cursor:'pointer', color:'#aaa', fontSize:16 }} > {showPw ? '🙈' : '👁'} </button> </div>
+
+
+
 
           {/* Terms */}
           <label style={{ display:'flex', alignItems:'flex-start', gap:10, marginBottom:24, cursor:'pointer' }}>
@@ -159,12 +154,12 @@ export default function Login({ onLogin, theme, toggleTheme }) {
           </button>
 
           {/* Social */}
-          <div style={{ display:'flex', gap:10 }}>
+          {/* <div style={{ display:'flex', gap:10 }}>
             {[
-              { l:'🍎', bg:'#000',    c:'#fff' },
-              { l:'G',  bg:'#f5f5f5', c:'#333', b:'1px solid #ddd' },
-              { l:'f',  bg:'#1877f2', c:'#fff' },
-            ].map((s, i) => (
+  { img: appleLogo, bg:'#000' },
+  { img: googleLogo, bg:'#fff', b:'1px solid #ddd' },
+  { img: facebookLogo, bg:'#1877f2' },
+].map((s, i) => (
               <button key={i}
                 onMouseEnter={e => e.currentTarget.style.opacity = '.8'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
@@ -173,6 +168,40 @@ export default function Login({ onLogin, theme, toggleTheme }) {
                 {s.l}
               </button>
             ))}
+          </div> */}
+
+
+
+
+           <div style={{ display:'flex', gap:10 }}>
+  {[
+    { img: appleLogo, bg:'#000' },
+    { img: googleLogo, bg:'#fff', b:'1px solid #ddd' },
+    { img: facebookLogo, bg:'#1877f2' },
+  ].map((s, i) => (
+    <button key={i}
+      onMouseEnter={e => e.currentTarget.style.opacity = '.8'}
+      onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+      style={{
+        flex:1,
+        padding:'11px',
+        background:s.bg,
+        border:s.b||'none',
+        borderRadius:8,
+        cursor:'pointer',
+        transition:'opacity .15s',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center'
+      }}
+    >
+      <img 
+        src={s.img} 
+        alt="" 
+        style={{ width:20, height:20 }}
+      />
+    </button>
+  ))}
           </div>
         </div>
       </div>
